@@ -29,7 +29,7 @@ def get_function(serialized_json: dict) -> Callable:
     return function
 
 
-def collect_modules(dir_path: Path) -> dict:
+def collect_modules(dir_path: Path = settings.MODULES_DIR) -> dict:
     modules_list = dir_path.glob('*.py')
 
     modules = {}

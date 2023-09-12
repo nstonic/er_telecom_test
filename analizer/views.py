@@ -1,7 +1,6 @@
 import json
 from http import HTTPStatus
 
-from django.conf import settings
 from django.http import JsonResponse, HttpRequest
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
@@ -35,5 +34,5 @@ def analize(request: HttpRequest):
 
 @require_http_methods(["GET"])
 def list_modules(request):
-    modules = collect_modules(settings.MODULES_DIR)
+    modules = collect_modules()
     return render(request, 'analizer/index.html', context={'modules': modules})
