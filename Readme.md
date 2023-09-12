@@ -12,3 +12,5 @@
 ```
 - Отмигрируйте БД `python3 manage.py migrate`
 - Запустите веб сервер `python3 manage.py runserver`
+
+- Для проверки можно использовать тестовые данные из `test.json`
