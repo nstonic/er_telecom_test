@@ -6,7 +6,7 @@ from typing import Callable
 from django.conf import settings
 
 
-def get_function(serialized_json: dict, modules_path: str = settings.MODULES_DIR) -> Callable:
+def get_function(serialized_json: dict, *, modules_path: str = settings.MODULES_DIR) -> Callable:
     if not isinstance(serialized_json, dict):
         raise TypeError('Data must be dict')
 
@@ -29,7 +29,7 @@ def get_function(serialized_json: dict, modules_path: str = settings.MODULES_DIR
     return function
 
 
-def collect_modules(modules_path: str = settings.MODULES_DIR) -> dict:
+def collect_modules(*, modules_path: str = settings.MODULES_DIR) -> dict:
     modules_list = Path(*modules_path.split('.')).glob('*.py')
 
     modules = {}
