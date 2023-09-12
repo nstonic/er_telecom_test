@@ -16,8 +16,6 @@ from pathlib import Path
 
 from environs import Env
 
-from analizer.services import collect_modules
-
 env = Env()
 env.read_env()
 
@@ -127,4 +125,3 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MODULES_DIR = pathlib.Path('analizer', 'modules')
-
