@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import importlib
 import os
-import pathlib
 from pathlib import Path
 
 from environs import Env
@@ -124,4 +123,4 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MODULES_DIR = pathlib.Path('analizer', 'modules')
+MODULES_DIR = Path('analizer', 'modules')
