@@ -1,8 +1,8 @@
 from django.urls import path
 
-from analizer.views import AnalizerView, list_modules
+from analizer.views import analize, list_modules
 
 urlpatterns = [
-    path('json/', AnalizerView.as_view(), name='json'),
+    path('json/', analize, name='json'),
     path('html/', list_modules, name='modules')
 ]

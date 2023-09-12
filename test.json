@@ -1,6 +1,6 @@
 {
 	"module": "module1",
-	"function": "sort_and_split",
+	"function": "sort_and_split_errors",
 	"data": {
 		"ERROR number 1": {
 			"ident": "2.1.11",

@@ -6,16 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <title>{% block title %}{% endblock %}</title>
+    <title>Доступные функции</title>
 </head>
 <body>
     <div class="container mb-3">
-        <form action="" enctype="multipart/form-data" method="post">
-            {% csrf_token %}
-            <label class="form-label">Загрузите файл для анализа</label>
-            <input class="form-control" type="file" name="json-file">
-            <button type="submit" class="btn btn-primary">Загрузить</button>
-        </form>
+        <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Модуль</th>
+            <th scope="col">Функция</th>
+            <th scope="col">Документация</th>
+            <th scope="col">Исходный код</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for module_name, functions in modules.items %}
+            {% for function_name, desc in functions.items %}
+                <tr>
+                    <td>{{ module_name }}</td>
+                    <td>{{ function_name }}</td>
+                    <td>{{ desc.function_docs }}</td>
+                    <td><code><pre>{{ desc.function_source }}</pre></code></td>
+                </tr>
+            {% endfor %}
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+        {% for module in modules %}
+
+        {% endfor %}
     </div>
 </body>
 
