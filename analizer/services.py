@@ -6,15 +6,15 @@ from typing import Callable
 from django.conf import settings
 
 
-def get_function(serialized_json: dict) -> Callable:
+def get_function(serialized_json: dict, modules_path: str = settings.MODULES_DIR) -> Callable:
     if not isinstance(serialized_json, dict):
         raise TypeError('Data must be dict')
 
     module_name = serialized_json.get('module')
     if not module_name:
         raise ValueError('Module not defined')
-    module_path = settings.MODULES_DIR.joinpath(module_name)
-    module = importlib.import_module('.'.join(module_path.parts))
+    module_path = f'{modules_path}.{module_name}'
+    module = importlib.import_module(module_path)
     members = dict(getmembers(module, isfunction))
 
     function_name = serialized_json.get('function')
@@ -29,8 +29,8 @@ def get_function(serialized_json: dict) -> Callable:
     return function
 
 
-def collect_modules(dir_path: Path = settings.MODULES_DIR) -> dict:
-    modules_list = dir_path.glob('*.py')
+def collect_modules(modules_path: str = settings.MODULES_DIR) -> dict:
+    modules_list = Path(*modules_path.split('.')).glob('*.py')
 
     modules = {}
     for module_path in modules_list:
